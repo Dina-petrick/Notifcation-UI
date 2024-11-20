@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+        }
+
+        #preview-notification-container {
+            flex: 9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .parent-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 20px;
+            width: 80%;
+            height: 100%;
+        }
+
+        .list-items {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f4f4;
+            box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            color: #333;
+            font-size: 20px;
+            font-weight: bold;
+            text-transform: capitalize;
+        }
+
+        .list-items:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+            background-color: #424141;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <header>Preview Notifications</header>
+    <div id="preview-notification-container">
+        <ul class="parent-list">
+            <a class="list-items" href="./modal/modal-one.html">Modal</a>
+            <a class="list-items" href="./fullscreen/fullscreen-one.html">Fullscreen</a>
+            <a class="list-items" href="./slider/slide-one.html">Slider-in</a>
+            <a class="list-items" href="./banner/banner-one.html">Banner</a>
+        </ul>
+    </div>  
+</body>
+</html>

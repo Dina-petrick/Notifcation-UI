@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        :root {
+            --primary-color: #4caf50;
+            --primary-hover: #45a049;
+            --secondary-color: #ddd;
+            --secondary-hover: #ccc;
+            --text-color: #333;
+            --background-color: #410a03;
+            --black-900: #000;
+            --black-700: #242424;
+            --white: #fff;
+
+            --primary-font: "Open Sans", sans-serif;
+            --secondary-font: "Montserrat", sans-serif;
+            --title-font: "Pathway Gothic One", cursive;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+            background-image: url("https://muffingroup.com/blog/wp-content/uploads/2023/03/Be-recipe-2.png");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            position: relative;
+        }
+
+        /* Fullscreen container */
+        .fullscreen {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .notification-wrapper{
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-width: 600px;
+            max-height: 400px;
+            height: 100%;
+        }
+
+        .left {
+            flex: 0 0 50%;
+        }
+
+        .right {
+            flex: 0 0 50%;
+
+        }
+
+        .left img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .right {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            height: 100%;
+            gap: 20px;
+            padding: 20px;
+
+        }
+
+        .fullscreen-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .fullscreen-content .title {
+            font-family: var(--secondary-font);
+            font-size: 30px;
+            color: var(--text-color);
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .fullscreen-content .body {
+            font-family: var(--primary-font);
+            font-size: 18px;
+            line-height: 1;
+            letter-spacing: -1px;
+            color: var(--text-color);
+            text-align: center;
+        }
+
+        .button-grp{
+            width: 100%;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .btn {
+            flex-basis: 50%;
+            background-color: var(--black-900);
+            font-family: var(--secondary-font);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            padding: 8px 16px;
+
+            transition: background-color 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 0px;
+            right: -31px;
+            font-size: 30px;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--white);
+            box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
+        }
+
+        .close-btn span {
+            font-weight: 900;
+        }
+
+        .timer{
+        margin-top: 10px;
+        font-family: "Pathway Gothic One", sans-serif;
+        font-weight: 800;
+        font-style: normal;
+    }
+
+    .timer > span {
+        display: inline-flex;
+        padding: 2px 4px;
+        letter-spacing: 1px;
+        min-width: 30px;
+        min-height: 30px;
+        border: 1px solid rgba(0, 0, 0, 0.4);
+        margin-right: 2px;
+        margin-left: 2px;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+
+    @media screen and (max-width: 600px) {
+
+        .notification-wrapper, .right{
+            min-width: 300px;
+            max-width: 300px;
+        }
+        .left{
+            display: none;
+        }
+
+        .close-btn{
+            top: 0px;
+            right: -0px;
+        }
+
+        /* .close-btn{
+            top: 0px;
+            right: 6px;
+        } */
+    }
+
+
+    @media screen and (max-width: 300px) {
+
+.notification-wrapper, .right{
+    min-width: 200px;
+    max-width: 200px;
+}
+
+.fullscreen-content .title {
+    font-size: 18px;
+}
+
+.fullscreen-content .body{
+    font-size: 13px;
+}
+
+.btn{
+    padding: 8px;
+    font-size: 10px;
+}
+
+}
+
+    
+.sub-links{
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        z-index: 1;
+    }
+
+    .sub-links-list{
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        gap: 15px;
+    }
+
+    .sub-links-items a , .backbtn a{
+
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+        font-family: "Roboto", sans-serif;
+        font-weight: 600;
+    }
+    .backbtn{
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 1;
+    }
+
+
+
+</style>
+</head>
+
+<body>
+
+    <div class="backbtn">
+        <a href="/" class="back-link"> Back to Home</a>
+    </div>
+    <div class="sub-links">
+        <ul class="sub-links-list">
+            <li class="sub-links-items"><a class="sub-links-link" href="./fullscreen-one.html">Fullscreen </a></li>
+            <li class="sub-links-items"><a class="sub-links-link" href="./fullscreen-two-timer.html">Fullscreen with timer</a></li>
+        </ul>
+    </div>
+    <div class="fullscreen">
+
+        <div class="notification-wrapper">
+        <div class="close-btn" id="close-btn"><span>&times;</span></div>
+
+            <div class="left"><img
+                src="https://images.unsplash.com/photo-1721332149346-00e39ce5c24f?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxfHx8ZW58MHx8fHx8"
+                alt="fullscreen image"></div>
+        <div class="right">
+            <div class="fullscreen-content">
+                <div class="title">Real-time synchronization</div>
+                <div class="body">Collaborating in the creative process is now easier than ever, thanks to real-time
+                    file synchronization.</div>
+            </div>
+
+            <div class="timer">
+                <span class="days">00</span> : <span class="hours">00</span> : <span class="minutes">00</span> : <span class="seconds">00</span>
+            </div>
+            
+            <div class="button-grp">
+                <button class="btn">shop now</button>
+                <button class="btn">dismiss</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <script>
+          
+  // Set a countdown time (example: 2 days, 3 hours, 45 minutes, 20 seconds)
+let countdownTime = {
+  days: 2,
+  hours: 3,
+  minutes: 45,
+  seconds: 20
+};
+
+// Function to format numbers as two digits
+function formatTime(time) {
+  return time < 10 ? `0${time}` : time;
+}
+
+// Function to update the timer with animation
+function updateTimer() {
+  // Decrease time by 1 second
+  if (countdownTime.seconds > 0) {
+    countdownTime.seconds--;
+  } else {
+    countdownTime.seconds = 59;
+
+    if (countdownTime.minutes > 0) {
+      countdownTime.minutes--;
+    } else {
+      countdownTime.minutes = 59;
+
+      if (countdownTime.hours > 0) {
+        countdownTime.hours--;
+      } else {
+        countdownTime.hours = 23;
+
+        if (countdownTime.days > 0) {
+          countdownTime.days--;
+        }
+      }
+    }
+  }
+
+  // Update the timer display with animation effect
+  const daysElem = document.querySelector('.days');
+  const hoursElem = document.querySelector('.hours');
+  const minutesElem = document.querySelector('.minutes');
+  const secondsElem = document.querySelector('.seconds');
+
+  // Add animation class for a slight "pulse" effect when updating
+  daysElem.classList.add('updating');
+  hoursElem.classList.add('updating');
+  minutesElem.classList.add('updating');
+  secondsElem.classList.add('updating');
+
+  setTimeout(() => {
+    daysElem.classList.remove('updating');
+    hoursElem.classList.remove('updating');
+    minutesElem.classList.remove('updating');
+    secondsElem.classList.remove('updating');
+  }, 500); // duration of pulse effect
+
+  // Update the text content with formatted time
+  daysElem.textContent = formatTime(countdownTime.days);
+  hoursElem.textContent = formatTime(countdownTime.hours);
+  minutesElem.textContent = formatTime(countdownTime.minutes);
+  secondsElem.textContent = formatTime(countdownTime.seconds);
+}
+
+// Run the timer every second
+setInterval(updateTimer, 1000);
+    </script>
+</body>
+
+</html>
