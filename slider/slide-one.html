@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&display=swap" rel="stylesheet">
+    <title>slider</title>
+
+    <style>
+
+        :root {
+            --primary-color: #4caf50;
+            --primary-hover: #45a049;
+            --secondary-color: #ddd;
+            --secondary-hover: #ccc;
+            --text-color: #333;
+            --background-color: #410a03;
+            --black-900: #000;
+            --black-700: #242424;
+            --white: #fff;
+
+            --primary-font: "Open Sans", sans-serif;
+            --secondary-font: "Montserrat", sans-serif;
+            --title-font: "Pathway Gothic One", cursive;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            height: 100vh;
+            background-color: #f5f5f5;
+            background-image: url("https://muffingroup.com/blog/wp-content/uploads/2023/03/Be-recipe-2.png");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            position: relative;
+        }
+
+        .slider{
+            height: 100%;
+            background-color: #000000a1;
+        }
+
+        .slider-container{
+            width: 100%;
+            height: 100%;
+            max-width: 220px;
+            max-height: 400px;
+            box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+            border-radius: 14px;
+            background-color: #ffffff;
+            padding: 10px 20px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: -50%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: left 0.6s linear;
+        }
+
+        .image-container{
+            margin-top: 20px;
+        }
+
+
+        .image-container img{
+            display: block;
+            width: 100%;
+            border-radius: 14px;
+            max-height: 120px;
+            object-fit: cover;
+            object-position: center;
+        }
+
+
+        .slider-content{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .sub-title{
+            font-family: var(--title-font);
+        }
+
+        .title{
+            font-family: var(--secondary-font);
+            text-transform: uppercase;
+            font-size: 20px;
+            line-height: 1.2;
+            margin-top: 5px;
+        }
+
+        .body{
+            font-family: var(--primary-font);
+            font-size: 14px;
+            padding: 0 10px;
+            line-height: 1;
+            color: var(--text-color);
+        }
+
+        .button{
+            background-color: var(--black-900);
+            color: var(--white);
+            font-family: var(--title-font);
+            font-size: 16px;
+            letter-spacing: 2px;
+            border: none;
+            border-radius: 12px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .close-btn{
+            position: absolute;
+            height: 18px;
+            width: 18px;
+            top: 5px;
+            right: 5px;
+            box-shadow: rgba(0, 0, 0, 0.295) 0px 0px 2px 2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+            border-radius: 50%;
+            cursor: pointer;
+            color: var(--black-900);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff;
+        }
+
+        .close-btn span{
+            font-size: 18px;
+            font-weight: 900;
+        }
+
+        .show-btn{
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--black-900);
+            color: var(--white);
+            font-family: var(--title-font);
+            font-size: 16px;
+            letter-spacing: 2px;
+            border: none;
+            border-radius: 12px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .show{
+            left: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="show-btn">
+        show Notification
+    </div>
+    <div class="slider">
+        <div class="slider-container">
+            <div class="close-btn"><span>&times;</span></div>
+            <div class="image-container"><img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8c2hvZXxlbnwwfHwwfHx8MA%3D%3D" alt="shoe"></div>
+            <div class="slider-content">
+                <div class="slider-title">
+                    <p class="sub-title">Hey User!</p>
+                    <h2 class="title">You left a few items behind</h2>
+                </div>
+                <p class="body">Complete your order now before stocks run out</p>
+                <button class="button">View Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let sliderContainer = document.querySelector('.slider-container');
+        let showBtn = document.querySelector('.show-btn');
+        let closeBtn = document.querySelector('.close-btn');
+
+
+        showBtn.addEventListener('click', () => {
+            sliderContainer.classList.add('show');
+
+            durationForNotification(3000);
+        });
+
+        closeBtn.addEventListener('click', () => {
+            sliderContainer.classList.remove('show');
+        });
+
+        function durationForNotification(timeLimit){
+            setTimeout(() => {
+                sliderContainer.classList.remove('show');
+            }, timeLimit);
+        }
+
+
+    </script>
+</body>
+</html>

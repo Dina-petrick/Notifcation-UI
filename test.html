@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&display=swap" rel="stylesheet">
+    <style>
+                :root {
+            --primary-color: #4caf50;
+            --primary-hover: #45a049;
+            --secondary-color: #ddd;
+            --secondary-hover: #ccc;
+            --text-color: #333;
+            --background-color: #410a03;
+            --black-900: #000;
+            --black-700: #242424;
+            --white: #fff;
+
+            --primary-font: "Open Sans", sans-serif;
+            --secondary-font: "Montserrat", sans-serif;
+            --title-font: "Pathway Gothic One", cursive;
+        }
+        html {
+  box-sizing: border-box;
+  background-color: #2d3748;
+  font-family: var(--title-font);
+  letter-spacing: 1px;
+}
+
+.flipclock {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.flipclock * {
+  box-sizing: inherit;
+}
+
+.leaf {
+  display: flex;
+  flex-direction: column;
+  margin: 0 4px;
+  perspective: 300px;
+}
+
+.leaf::after {
+  content: attr(data-label);
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-top: 8px;
+  transform: translateX(-50%);
+  color: #f2f2f2;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+
+.top,
+.bottom,
+.leaf-front,
+.leaf-back {
+  position: relative;
+  display: block;
+  height: 64px;
+  width: 120px;
+  background-color: #f2f2f2;
+  color: #2d3748;
+  overflow: hidden;
+  border-color: #2d3748;
+}
+
+.top span,
+.bottom span,
+.leaf-front span,
+.leaf-back span {
+  position: absolute;
+  left: 50%;
+  width: 100%;
+  height: 128px;
+  text-align: center;
+  font-family: "Impact", sans-serif;
+  font-size: 80px;
+  line-height: 128px;
+  transform: translateX(-50%);
+}
+
+.leaf._3-digits .top,
+.leaf._3-digits .bottom,
+.leaf._3-digits .leaf-front,
+.leaf._3-digits .leaf-back {
+  width: 148px;
+}
+
+.top,
+.leaf-front {
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  margin-bottom: 1px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+}
+
+.top span,
+.leaf-front span {
+  top: 0;
+}
+
+.leaf-front {
+  position: absolute;
+  z-index: 10;
+}
+
+.bottom,
+.leaf-back {
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  border-top-style: solid;
+  border-top-width: 1px;
+}
+
+.bottom span,
+.leaf-back span {
+  bottom: 0;
+}
+
+.leaf-back {
+  position: absolute;
+  top: 64px;
+  z-index: 10;
+}
+
+@media screen and (max-width: 600px) {
+  .flipclock {
+    padding: 6.6667vw;
+  }
+
+  .leaf {
+    margin: 0 0.6667vw;
+  }
+
+  .leaf::after {
+    margin-top: 1.3333vw;
+    font-size: 2.3333vw;
+  }
+
+  .top,
+  .bottom,
+  .leaf-front,
+  .leaf-back {
+    height: 10.6667vw;
+    width: 20vw;
+  }
+
+  .top span,
+  .bottom span,
+  .leaf-front span,
+  .leaf-back span {
+    height: 21.3333vw;
+    font-size: 13.3333vw;
+    line-height: 21.3333vw;
+  }
+
+  .leaf._3-digits .top,
+  .leaf._3-digits .bottom,
+  .leaf._3-digits .leaf-front,
+  .leaf._3-digits .leaf-back {
+    width: 24.6667vw;
+  }
+
+  .top,
+  .leaf-front {
+    border-top-left-radius: 1vw;
+    border-top-right-radius: 1vw;
+  }
+
+  .bottom,
+  .leaf-back {
+    border-bottom-left-radius: 1vw;
+    border-bottom-right-radius: 1vw;
+  }
+
+  .leaf-back {
+    top: 10.6667vw;
+  }
+}
+
+.leaf-front {
+  transform-origin: bottom center;
+  transform: rotateX(0deg);
+  transform-style: preserve-3d;
+  transition-delay: 0.3s;
+}
+
+.leaf-back {
+  transform-origin: top center;
+  transform: rotateX(90deg);
+  transform-style: preserve-3d;
+  transition-delay: 0s;
+}
+
+.bottom::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  filter: blur(10px);
+}
+
+.flip .leaf-front {
+  transform: rotateX(-90deg);
+  transition: transform 0.3s ease-in, background-color 0.3s ease-in,
+    color 0.3s ease-in;
+  transition-delay: 0s;
+  color: #1b2028;
+  background-color: #d9d9d9;
+}
+
+.flip .leaf-back {
+  transform: rotateX(0deg);
+  transition: transform 0.3s ease-in, background-color 0.3s ease-in,
+    color 0.3s ease-in;
+  transition-delay: 0.3s;
+}
+
+.flip .bottom::before {
+  transition: height 0.3s ease-in-out;
+  transition-delay: 0.15s;
+  height: 100%;
+}
+
+.flipclock-wrapper {
+    width: 600px; /* Desired width */
+    transform: scale(0.5); /* Adjust scale to fit the width */
+    transform-origin: top left; /* Ensure scaling starts from the top-left corner */
+}
+
+  .button-container {
+      display: flex;
+      gap: 20px;
+      padding: 20px;;
+      justify-content: space-between;
+      margin-top: 15px;
+    }
+
+    .button {
+      flex: 1;
+      padding: 8px 15px;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      color: white;
+      font-family: "Roboto", sans-serif;
+      font-weight: 600;
+    }
+
+    .button-primary {
+      background-color: var(--black-900);
+    }
+
+    .button-primary:hover {
+      background-color: var(--primary-hover);
+    }
+
+    .button-secondary {
+      background-color: var(--secondary-color);
+      color: var(--text-color);
+    }
+
+    .button-secondary:hover {
+      background-color: var(--secondary-hover);
+    }
+
+
+  @media screen and (max-width: 600px) {
+    .flipclock-wrapper {
+      transform: scale(0.5); /* Scale down further for smaller screens */
+    }
+  }
+
+    </style>
+</head>
+<body>
+    <div  style="background-color: red; width: 300px; height: 350px; display: flex; flex-direction: column; justify-content: center;"> 
+        <h1 class="title" style="text-align: center; text-transform: uppercase;">counter timer</h1>
+        <div class="flipclock-wrapper" style="height: 120px;">
+            <div class="flipclock" id="flipclock-1"></div>
+        </div>
+        <div class="button-container">
+            <button class="button button-secondary">Previous</button>
+            <button class="button button-primary">Continue</button>
+        </div>
+    </div>
+    <script>
+        (function () {
+  function FlipClock(el, config) {
+    const defaultConfig = {
+      endDate: new Date(new Date().getFullYear() + 1, 0, 0),
+      labels: {
+        days: "Days",
+        hours: "Hours",
+        minutes: "Minutes",
+        seconds: "Seconds",
+      },
+    };
+
+    this.el = el;
+    this.config = Object.assign(defaultConfig, config);
+    this.current = { d: "000", h: "00", m: "00", s: "00" };
+
+    let updateTimeout;
+    createView.call(this);
+    addObserver.call(this);
+
+    const start = () => {
+      this.current = getTimeUntil(this.config.endDate);
+      updateView.call(this);
+      clearTimeout(updateTimeout);
+      updateTimeout = setTimeout(start, 500);
+    };
+
+    const stop = () => clearTimeout(updateTimeout);
+
+    const destroy = () => {
+      stop();
+      this.observer.disconnect();
+      this.el.innerHTML = "";
+    };
+
+    function getTimeUntil(endDate) {
+      let delta = Math.abs(endDate - Date.now()) / 1000;
+      const d = Math.floor(delta / 86400);
+      delta %= 86400;
+      const h = Math.floor(delta / 3600);
+      delta %= 3600;
+      const m = Math.floor(delta / 60);
+      const s = Math.floor(delta % 60);
+
+      return {
+        d: pad(d, 3),
+        h: pad(h, 2),
+        m: pad(m, 2),
+        s: pad(s, 2),
+      };
+    }
+
+    const pad = (num, digits) => num.toString().padStart(digits, "0");
+
+    function createView() {
+      this.daysLeaf = createLeaf.call(this, this.config.labels.days, 3);
+      this.hoursLeaf = createLeaf.call(this, this.config.labels.hours);
+      this.minutesLeaf = createLeaf.call(this, this.config.labels.minutes);
+      this.secondsLeaf = createLeaf.call(this, this.config.labels.seconds);
+    }
+
+    function createLeaf(label, digits = 2) {
+      const leaf = document.createElement("div");
+      leaf.className = `leaf _${digits}-digits`;
+      leaf.setAttribute("data-label", label);
+
+      const structure = ["top", "leaf-front", "leaf-back", "bottom"];
+      structure.forEach((part) => {
+        const div = document.createElement("div");
+        div.className = part;
+        const span = document.createElement("span");
+        div.appendChild(span);
+        leaf.appendChild(div);
+      });
+
+      this.el.appendChild(leaf);
+
+      return {
+        el: leaf,
+        topLabel: leaf.children[0].querySelector("span"),
+        frontLabel: leaf.children[1].querySelector("span"),
+        backLabel: leaf.children[2].querySelector("span"),
+        bottomLabel: leaf.children[3].querySelector("span"),
+      };
+    }
+
+    function updateView() {
+      updateLeaf(this.daysLeaf, this.current.d);
+      updateLeaf(this.hoursLeaf, this.current.h);
+      updateLeaf(this.minutesLeaf, this.current.m);
+      updateLeaf(this.secondsLeaf, this.current.s);
+    }
+
+    function updateLeaf(leaf, value) {
+      if (leaf.isFlipping || leaf.topLabel.innerText === value) return;
+
+      leaf.isFlipping = true;
+      leaf.topLabel.innerText = leaf.backLabel.innerText = value;
+      leaf.el.classList.add("flip");
+
+      setTimeout(() => {
+        leaf.frontLabel.innerText = leaf.bottomLabel.innerText = value;
+        leaf.el.classList.remove("flip");
+        leaf.isFlipping = false;
+      }, 600);
+    }
+
+    function addObserver() {
+      this.observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => (entry.isIntersecting ? start() : stop()));
+      });
+      this.observer.observe(this.el);
+    }
+
+    return { start, stop, destroy, getCurrent: () => this.current };
+  }
+
+  // Initialize FlipClock examples
+  const currentYear = new Date().getFullYear();
+
+  new FlipClock(document.getElementById("flipclock-1"), {
+    endDate: new Date(currentYear + 1, 6, 16),
+  });
+
+})();
+
+    </script>
+</body>
+</html>
