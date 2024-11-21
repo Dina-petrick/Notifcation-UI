@@ -10,14 +10,19 @@
 
   <title>Modal Notification</title>
   <style>
-    :root {
-      --primary-color: #4caf50;
-      --primary-hover: #45a049;
-      --secondary-color: #ddd;
-      --secondary-hover: #ccc;
-      --text-color: #333;
-      --background-color: #410a03;
-    }
+        :root {
+            --primary-color: #4caf50;
+            --secondary-color: #ddd;
+            --text-color: #333;
+            --background-gradient: linear-gradient(135deg, #410a03, #800909);
+            --white: #fff;
+            --card-bg: rgba(255, 255, 255, 0.1);
+            --card-hover: rgba(255, 255, 255, 0.2);
+
+            --primary-font: "Open Sans", sans-serif;
+            --secondary-font: "Montserrat", sans-serif;
+            --title-font: "Pathway Gothic One", cursive;
+        }
 
     body {
       display: flex;
@@ -100,9 +105,6 @@
         top: -7px;
     }
 
-    .close-btn:hover {
-      background-color: var(--secondary-hover);
-    }
 
     .notification-wrapper{
         width: 100vw;
@@ -220,11 +222,11 @@
         margin-left: 2px;
     }
 
-    
+
     .sub-links{
         position: fixed;
-        bottom: 0;
-        right: 0;
+        bottom: 10px;
+        right: 10px;
     }
 
     .sub-links-list{
@@ -232,31 +234,57 @@
         padding: 0;
         margin: 0;
         display: flex;
+        flex-direction: column;
+        
         gap: 15px;
     }
 
-    .sub-links-items a , .backbtn a{
-        color: white;
+    .sub-links-items{
+      transform: scale(1);
+      transition: transform 0.3s linear;
+    }
+
+    .sub-links-items a{
+      border-radius: 10px;
+
+      text-align: center;
+        background-color: white;
+        display: block;
+        padding: 10px 14px;
+        color: rgb(0, 0, 0);
         text-decoration: none;
-        font-size: 14px;
-        font-family: "Roboto", sans-serif;
-        font-weight: 600;
+        font-size: 16px;
+        font-family: var(--title-font);
+        font-weight: 500;
+        text-transform: capitalize;
+    }
+
+    .sub-links-items:active{
+      transform: scale(0.9);
     }
 
     .backbtn{
         position: fixed;
-        top: 0;
-        right: 0;
+        top: 10px;
+        right: 10px;
+        background-color: rgb(255, 0, 0);
+        color: #fff;
+        padding: 10px;
+        z-index: 10;
     }
 
+    .backbtn{
+      font-family: var(--title-font);
+      font-size: 20px;
+      text-transform: capitalize;
+      text-decoration: none;
+    }
 
   </style>
 </head>
 <body>
 
-    <div class="backbtn">
-        <a href="/" class="back-link"> Back to Home</a>
-    </div>
+  <a href="/" class="backbtn"> Back to Home</a>
 
     <div class="sub-links">
         <ul class="sub-links-list">
@@ -267,7 +295,7 @@
         </ul>
     </div>
     <div class="notification-wrapper">
-        <div class="notification-container" id="notification">
+        <div class="notification-container show" id="notification">
             <div class="close-btn" id="close-btn"><span>&times;</span></div>
             <div class="notification">
               <img class="test-image" src="https://cdn.pixabay.com/photo/2014/06/03/19/38/board-361516_640.jpg" alt="Notification Image">
@@ -285,18 +313,11 @@
     </div>
 
 
-  <button class="reset-btn" id="reset-btn">Show Notification</button>
 
   <script>
     const notification = document.getElementById("notification");
     const closeBtn = document.getElementById("close-btn");
-    const resetBtn = document.getElementById("reset-btn");
 
-    // Show notification with slide-down and fade-in animation
-    function showNotification() {
-      notification.classList.remove("hide");
-      notification.classList.add("show");
-    }
 
     // Close notification with slide-up and fade-out animation
     function closeNotification() {
@@ -309,13 +330,6 @@
 
     // Event listeners
     closeBtn.addEventListener("click", closeNotification);
-    resetBtn.addEventListener("click", () => {
-      notification.style.display = "block";
-      showNotification();
-    });
-
-    // Show notification initially
-    showNotification();
 
     
   // Set a countdown time (example: 2 days, 3 hours, 45 minutes, 20 seconds)

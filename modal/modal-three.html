@@ -6,8 +6,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-
   <link href="https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&display=swap" rel="stylesheet">
+
   <title>Modal Notification</title>
   <style>
     :root {
@@ -100,9 +100,6 @@
         color: #000000;
     }
 
-    .close-btn:hover {
-      background-color: var(--secondary-hover);
-    }
 
     .notification-wrapper{
         width: 100vw;
@@ -221,10 +218,11 @@
     }
 
     
+  
     .sub-links{
         position: fixed;
-        bottom: 0;
-        right: 0;
+        bottom: 10px;
+        right: 10px;
     }
 
     .sub-links-list{
@@ -232,31 +230,55 @@
         padding: 0;
         margin: 0;
         display: flex;
+        flex-direction: column;
+        
         gap: 15px;
     }
 
-    .sub-links-items a , .backbtn a{
-
-        color: white;
-        text-decoration: none;
-        font-size: 14px;
-        font-family: "Roboto", sans-serif;
-        font-weight: 600;
+    .sub-links-items{
+      transform: scale(1);
+      transition: transform 0.3s linear;
     }
+
+    .sub-links-items a{
+      border-radius: 10px;
+
+      text-align: center;
+        background-color: white;
+        display: block;
+        padding: 10px 14px;
+        color: rgb(0, 0, 0);
+        text-decoration: none;
+        font-size: 16px;
+        font-family: var(--title-font);
+        font-weight: 500;
+        text-transform: capitalize;
+    }
+
+    .sub-links-items:active{
+      transform: scale(0.9);
+    }
+
     .backbtn{
         position: fixed;
-        top: 0;
-        right: 0;
+        top: 10px;
+        right: 10px;
+        background-color: rgb(255, 0, 0);
+        color: #fff;
+        padding: 10px;
+        z-index: 10;
     }
 
-
-
+    .backbtn{
+      font-family: var(--title-font);
+      font-size: 20px;
+      text-transform: capitalize;
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
-    <div class="backbtn">
-        <a href="/" class="back-link"> Back to Home</a>
-    </div>
+  <a href="/" class="backbtn"> Back to Home</a>
     <div class="sub-links">
         <ul class="sub-links-list">
             <li class="sub-links-items"><a class="sub-links-link" href="./modal-one.html">Modal 1</a></li>
@@ -266,7 +288,7 @@
         </ul>
     </div>
     <div class="notification-wrapper">
-        <div class="notification-container" id="notification">
+        <div class="notification-container show" id="notification">
             <div class="close-btn" id="close-btn"><span>&times;</span></div>
             <div class="notification">
                 <div>
@@ -291,18 +313,12 @@
     </div>
 
 
-  <button class="reset-btn" id="reset-btn">Show Notification</button>
 
   <script>
     const notification = document.getElementById("notification");
     const closeBtn = document.getElementById("close-btn");
     const resetBtn = document.getElementById("reset-btn");
 
-    // Show notification with slide-down and fade-in animation
-    function showNotification() {
-      notification.classList.remove("hide");
-      notification.classList.add("show");
-    }
 
     // Close notification with slide-up and fade-out animation
     function closeNotification() {
@@ -315,13 +331,6 @@
 
     // Event listeners
     closeBtn.addEventListener("click", closeNotification);
-    resetBtn.addEventListener("click", () => {
-      notification.style.display = "block";
-      showNotification();
-    });
-
-    // Show notification initially
-    showNotification();
 
   // Set a countdown time (example: 2 days, 3 hours, 45 minutes, 20 seconds)
 let countdownTime = {

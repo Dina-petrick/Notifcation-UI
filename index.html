@@ -3,9 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&display=swap" rel="stylesheet">
+    <title>Preview Notifications</title>
 
     <style>
+        :root {
+            --primary-color: #4caf50;
+            --secondary-color: #ddd;
+            --text-color: #333;
+            --background-gradient: linear-gradient(135deg, #410a03, #800909);
+            --white: #fff;
+            --card-bg: rgba(255, 255, 255, 0.1);
+            --card-hover: rgba(255, 255, 255, 0.2);
+
+            --primary-font: "Open Sans", sans-serif;
+            --secondary-font: "Montserrat", sans-serif;
+            --title-font: "Pathway Gothic One", cursive;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -13,64 +31,64 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
+            font-family: var(--primary-font);
+            background: var(--background-gradient);
+            color: var(--white);
             display: flex;
             flex-direction: column;
-            height: 100vh;
-            margin: 0;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
         }
 
         header {
-            background-color: #333;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 24px;
+            font-family: var(--title-font);
+            letter-spacing: 2px;
+            font-weight: 500;
+            font-size: 40px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            color: var(--white);
         }
 
         #preview-notification-container {
-            flex: 9;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            width: 90%;
+            max-width: 600px;
             padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(8px);
+            background: rgba(0, 0, 0, 0.5);
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        ul {
+            list-style: none;
         }
 
         .parent-list {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-gap: 20px;
-            width: 80%;
-            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
         }
 
         .list-items {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #f4f4f4;
-            box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.5);
-            border-radius: 8px;
-            transition: transform 0.3s, box-shadow 0.3s;
+            display: block;
+            padding: 15px 20px;
+            font-size: 18px;
             text-decoration: none;
-            color: #333;
-            font-size: 20px;
-            font-weight: bold;
-            text-transform: capitalize;
+            color: var(--white);
+            background: var(--card-bg);
+            border-radius: 8px;
+            transition: all 0.3s ease-in-out;
+            font-family: var(--secondary-font);
+            text-transform: uppercase;
         }
 
         .list-items:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
-            background-color: #424141;
-            color: #ffffff;
+            background: var(--card-hover);
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
     </style>
 </head>
@@ -82,7 +100,8 @@
             <a class="list-items" href="./fullscreen/fullscreen-one.html">Fullscreen</a>
             <a class="list-items" href="./slider/slide-one.html">Slider-in</a>
             <a class="list-items" href="./banner/banner-one.html">Banner</a>
+            <a class="list-items" href="./carousel/carousel.html">Carousel</a>
         </ul>
-    </div>  
+    </div>
 </body>
 </html>

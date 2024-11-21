@@ -6,23 +6,19 @@
     <title>Document</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&display=swap" rel="stylesheet">
 
     <style>
 
 :root {
             --primary-color: #4caf50;
-            --primary-hover: #45a049;
             --secondary-color: #ddd;
-            --secondary-hover: #ccc;
             --text-color: #333;
-            --background-color: #410a03;
-            --black-900: #000;
-            --black-700: #242424;
+            --background-gradient: linear-gradient(135deg, #410a03, #800909);
             --white: #fff;
+            --card-bg: rgba(255, 255, 255, 0.1);
+            --card-hover: rgba(255, 255, 255, 0.2);
 
             --primary-font: "Open Sans", sans-serif;
             --secondary-font: "Montserrat", sans-serif;
@@ -62,13 +58,13 @@
 
     /* center  */
 
-    /* top: 50%;
+    top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); */
+    transform: translate(-50%, -50%);
 
     /* top  */
-    top: 0;
-    left: 0;
+    /* top: 0;
+    left: 0; */
     box-shadow: 0px 0px 10px #00000033;
     display: flex;
     justify-content: center;
@@ -77,8 +73,8 @@
     background-position: center;
     background-size: cover; /* Ensures the image covers the container */
     background-repeat: no-repeat; /* Prevents tiling */
-    background-color: #fff;
     background-image: url("https://cdn.claspo.io/img/77/forms/1650/1f118b76-0230-4061-a82f-3a9ee37a4a70.png");
+    background-color: #fff;
     background-size: cover;
 }
 
@@ -161,10 +157,30 @@
             }
         }
 
+        .backbtn{
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        background-color: rgb(255, 0, 0);
+        color: #fff;
+        padding: 10px;
+    }
+
+    .backbtn{
+      font-family: var(--title-font);
+      font-size: 20px;
+      text-transform: capitalize;
+      text-decoration: none;
+    }
+
+
+
     </style>
 
 </head>
 <body>
+
+    <a href="/" class="backbtn"> Back to Home</a>
     <div class="notification">
         <div class="notification-container">
         <div class="close-btn" id="close-btn"><span>&times;</span></div>
