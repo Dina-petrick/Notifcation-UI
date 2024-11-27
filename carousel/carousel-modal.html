@@ -60,17 +60,17 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             width: 100%;
-            max-width: 600px;
+            max-width: 300px;
             max-height: 400px;
             height: 100%;
-            overflow: hidden;
             background-color: #fff;
         }
 
         .left {
             flex: 0 0 50%;
-            height: 100%;
+            width: 100%;
             position: relative;
             overflow: hidden;
         }
@@ -100,7 +100,6 @@
             object-fit: cover;
             object-position: center;
             user-select: none;
-
         }
         
 
@@ -147,7 +146,7 @@
 
         .carousel-content .title {
             font-family: var(--secondary-font);
-            font-size: 30px;
+            font-size: 20px;
             color: var(--text-color);
             font-weight: 600;
             text-align: center;
@@ -158,8 +157,8 @@
 
         .carousel-content .body {
             font-family: var(--primary-font);
-            font-size: 18px;
-            line-height: 1.5;
+            font-size: 16px;
+            line-height: 1.2;
             letter-spacing: -1px;
             color: var(--text-color);
             text-align: center;
@@ -178,26 +177,36 @@
         }
 
         .btn {
+            font-size: 12px;
             flex-basis: 50%;
             background-color: var(--black-900);
             font-family: var(--secondary-font);
             color: #fff;
             border: none;
             cursor: pointer;
-            padding: 8px 16px;
-            transition: transform 0.3s ease, background-color 0.3s ease;
+            padding: 6px 10px;
+            filter: invert(0);
+            transition: transform 0.3s ease, background-color 0.3s ease, filter 0.2s ease;
             text-transform: uppercase;
+            border: 1px solid transparent;
         }
 
-        .btn:hover {
-            transform: scale(1.1);
-            background-color: var(--primary-hover);
+        .btn-primary{
+            background-color: var(--primary-color);
+            color: #fff;
+
+        }
+
+        .btn:active {
+            transform: scale(0.9);
+            filter: invert(100%);
+            border: 1px solid;
         }
 
         .close-btn {
             position: absolute;
             top: 0px;
-            right: 0px;
+            right: -30px;
             font-size: 30px;
             width: 30px;
             height: 30px;
@@ -216,6 +225,8 @@
         }
 
         .image-element img {
+            transform: scale(1);
+
             animation: fadeIn 0.8s ease-in-out, zoom 10s infinite alternate;
             transform-origin: center;
         }
@@ -290,7 +301,8 @@
       text-decoration: none;
     }
 
-        
+
+    
     .sub-links{
         position: fixed;
         bottom: 10px;
@@ -364,6 +376,7 @@
       animation: slideFadeOut 0.5s forwards;
     }
 
+
     </style>
 </head>
 
@@ -402,7 +415,7 @@
                     <div class="body"></div>
                 </div>
                 <div class="button-grp">
-                    <button class="btn">Shop Now</button>
+                    <button class="btn btn-primary">Shop Now</button>
                     <button class="btn">Dismiss</button>
                 </div>
             </div>
@@ -535,7 +548,7 @@ prevBtn.addEventListener('click', () => {
 startInterval();
 updateCarousel(currentIndex);
 
-updateSliderWithDot()
+updateSliderWithDot();
 
 const notification = document.getElementById("notification");
     const closeBtn = document.getElementById("close-btn");

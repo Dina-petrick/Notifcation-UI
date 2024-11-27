@@ -33,31 +33,44 @@
         }
 
         body {
-            background-color: transparent;
-
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+            background-image: url("https://muffingroup.com/blog/wp-content/uploads/2023/03/Be-recipe-2.png");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
             position: relative;
-            max-width: 600px;
-            max-height: 400px;
         }
 
-
+        .carousel {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
 
         .notification-wrapper {
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             width: 100%;
-            max-width: 600px;
+            max-width: 300px;
             max-height: 400px;
             height: 100%;
-            overflow: hidden;
             background-color: #fff;
         }
 
         .left {
             flex: 0 0 50%;
-            height: 100%;
+            width: 100%;
             position: relative;
             overflow: hidden;
         }
@@ -87,7 +100,6 @@
             object-fit: cover;
             object-position: center;
             user-select: none;
-
         }
         
 
@@ -134,7 +146,7 @@
 
         .carousel-content .title {
             font-family: var(--secondary-font);
-            font-size: 30px;
+            font-size: 20px;
             color: var(--text-color);
             font-weight: 600;
             text-align: center;
@@ -145,8 +157,8 @@
 
         .carousel-content .body {
             font-family: var(--primary-font);
-            font-size: 18px;
-            line-height: 1.5;
+            font-size: 16px;
+            line-height: 1.2;
             letter-spacing: -1px;
             color: var(--text-color);
             text-align: center;
@@ -165,26 +177,36 @@
         }
 
         .btn {
+            font-size: 12px;
             flex-basis: 50%;
             background-color: var(--black-900);
             font-family: var(--secondary-font);
             color: #fff;
             border: none;
             cursor: pointer;
-            padding: 8px 16px;
-            transition: transform 0.3s ease, background-color 0.3s ease;
+            padding: 6px 10px;
+            filter: invert(0);
+            transition: transform 0.3s ease, background-color 0.3s ease, filter 0.2s ease;
             text-transform: uppercase;
+            border: 1px solid transparent;
         }
 
-        .btn:hover {
-            transform: scale(1.1);
-            background-color: var(--primary-hover);
+        .btn-primary{
+            background-color: var(--primary-color);
+            color: #fff;
+
+        }
+
+        .btn:active {
+            transform: scale(0.9);
+            filter: invert(100%);
+            border: 1px solid;
         }
 
         .close-btn {
             position: absolute;
             top: 0px;
-            right: 0px;
+            right: -30px;
             font-size: 30px;
             width: 30px;
             height: 30px;
@@ -197,16 +219,14 @@
             box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
         }
 
-        .close-btn:hover {
-            transform: scale(1.2);
-            background-color: var(--secondary-hover);
-        }
 
         .close-btn span {
             font-weight: 900;
         }
 
         .image-element img {
+            transform: scale(1);
+
             animation: fadeIn 0.8s ease-in-out, zoom 10s infinite alternate;
             transform-origin: center;
         }
@@ -264,11 +284,32 @@
             background-color: white;
         }
 
+        .backbtn{
+        position: fixed;
+        z-index: 10;
+        top: 10px;
+        right: 10px;
+        background-color: rgb(255, 0, 0);
+        color: #fff;
+        padding: 10px;
+    }
+
+    .backbtn{
+      font-family: var(--title-font);
+      font-size: 20px;
+      text-transform: capitalize;
+      text-decoration: none;
+    }
+
+
+
 
     </style>
 </head>
 
 <body>
+
+    <a href="/" class="backbtn"> Back to Home</a>
     <div class="carousel">
         <div class="notification-wrapper">
             <div class="close-btn" id="close-btn"><span>&times;</span></div>
@@ -294,7 +335,7 @@
                     <div class="body"></div>
                 </div>
                 <div class="button-grp">
-                    <button class="btn">Shop Now</button>
+                    <button class="btn btn-primary">Shop Now</button>
                     <button class="btn">Dismiss</button>
                 </div>
             </div>
@@ -327,7 +368,7 @@ let carouselData = [
 ];
 
 let currentIndex = 0;
-let timer = 300000; // Set the interval time in milliseconds
+let timer = 10000; // Set the interval time in milliseconds
 let interval;
 
 
