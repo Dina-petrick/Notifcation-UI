@@ -54,6 +54,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    z-index: 3;
 }
 
 .close{
@@ -139,7 +141,7 @@ button{
 
 .show-notification{
     position: absolute;
-    z-index: -1;
+    z-index: 1;
 }
 
 @keyframes slideFadeIn {
@@ -175,12 +177,44 @@ button{
       animation: slideFadeOut 0.5s forwards;
     }
 
+    
+    .backbtn{
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        background-color: rgb(255, 0, 0);
+        color: #fff;
+        padding: 10px;
+    }
+
+    .backbtn{
+      font-family: var(--title-font);
+      font-size: 20px;
+      text-transform: capitalize;
+      text-decoration: none;
+    }
+
+    .show-notification{
+        background-color: #000;
+        color: #fff;
+        padding: 14px 16px;
+        border-radius: 10px;
+        border: none;
+        text-decoration: none;
+        font-size: 20px;
+        letter-spacing: 1px;
+        font-family: var(--title-font);
+        text-transform: uppercase;
+    }
+
      
 </style>
 </head>
 
 <body>
-    <a href="./test2.html" class="show-notification"  id="show-notification">show notification</a>
+    <a href="/" class="backbtn"> Back to Home</a>
+
+    <a href="./fullscreenTakeover.html" class="show-notification"  id="show-notification">show notification</a>
     <div class="fullscreen-takeover" id="notification">
         <div class="close" id="close-btn">&times;</div>
         <div class="container">
@@ -199,7 +233,7 @@ button{
                 </span>
             </div>
             <div class="right">
-                <img src="./assets/images/cosmeticsTransparent.png" alt="">
+                <img src="../assets/images/cosmeticsTransparent.png" alt="">
             </div>
         </div>
     </div>
